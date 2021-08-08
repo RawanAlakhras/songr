@@ -1,0 +1,30 @@
+*{
+    box-sizing: border-box;
+}
+main{
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 70%;
+}
+h1{
+    text-align: center;
+    color: blueviolet;
+}
+.card-img-top{
+    height: 40vh;
+}
+.homePage{
+    width: 100%;
+    height: 90vh;
+
+}
+.homePage img{
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+}
+.nav-link ,.navbar-brand{
+    font-size: 30px;
+}
