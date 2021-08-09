@@ -32,6 +32,53 @@
 <!-- end navbar -->
 <div>
     <div class="container">
+<!--  form       -->
+        <div class="row">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-danger m-auto w-25 mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+               add album
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add album </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="#" th:action="@{/addNewAlbum}" method="post">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">title</label>
+                                    <input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">artist</label>
+                                    <input name="artist" type="text" class="form-control" id="exampleInputPassword1"  required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="songCount" class="form-label">songCount</label>
+                                    <input name="songCount" type="number" class="form-control" id="songCount"  required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="length" class="form-label">length</label>
+                                    <input  name="length" type="number" class="form-control" id="length"  required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="imageUrl" class="form-label">imageUrl</label>
+                                    <input name="imageUrl" type="text" class="form-control" id="imageUrl"  required>
+                                </div>
+
+                                <button type="submit" class="btn btn-danger">Submit</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--   end from      -->
         <div class="row row-cols-3">
             <div class="col" th:each="album : ${albums}">
                 <p ></p>
