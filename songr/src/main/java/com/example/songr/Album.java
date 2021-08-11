@@ -1,9 +1,7 @@
 package com.example.songr;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Album {
@@ -17,8 +15,25 @@ public class Album {
     private int songCount;
     private int length;
     private String imageUrl;
+    @OneToMany(mappedBy = "songAlbum")
+    private List<Song> songs;
 
     public Album() {
+    }
+
+
+
+    public Album(String title) {
+        this.title = title;
+    }
+
+    public Album(String title, String artist, int songCount, int length, String imageUrl, List<Song> song) {
+        this.title = title;
+        this.artist = artist;
+        this.songCount = songCount;
+        this.length = length;
+        this.imageUrl = imageUrl;
+        this.songs = song;
     }
 
     public Album(String title, String artist, int songCount, int length, String imageUrl) {
@@ -28,7 +43,13 @@ public class Album {
         this.length = length;
         this.imageUrl = imageUrl;
     }
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
+    }
 
+    public List<Song> getSongs() {
+        return songs;
+    }
     public Long getId() {
         return id;
     }
