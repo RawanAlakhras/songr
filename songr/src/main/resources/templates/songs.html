@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link th:href="@{/style.css}" rel="stylesheet">
+
+</head>
+<body>
+<!-- start navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse ps-5 pe-5" id="navbarSupportedContent">
+      <a class="navbar-brand" href="#">Songer</a>
+      <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/albums">albums</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/songs">Songs</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+<!-- end navbar -->
+<div>
+  <div class="container">
+    <!--  form       -->
+    <div class="row">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-danger m-auto w-25 mt-5 mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        add song
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add song </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="#" th:action="@{/addNewSong}" method="post">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">title</label>
+                  <input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">trackNumber</label>
+                  <input name="trackNumber" type="number" class="form-control" id="exampleInputPassword1"  required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="length" class="form-label">length</label>
+                  <input  name="length" type="number" class="form-control" id="length"  required>
+                </div>
+                <div class="mb-3">
+                  <label for="song_album_id" class="form-label">song_album_id</label>
+                  <input name="song_album_id" type="number" class="form-control" id="song_album_id"  required>
+                </div>
+
+
+                <button type="submit" class="btn btn-danger">Submit</button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--   end from      -->
+    <div class="row row-cols-3">
+
+      <div class="col" th:each="song : ${songs}">
+
+        <div class="card" >
+          <div class="card-body">
+            <h5 class="card-title" th:text="${song.title}"></h5>
+
+            <p class="card-text" th:text="'song track Number: ' + ${song.trackNumber}"></p>
+            <p class="card-text" th:text="'length: ' + ${song.length}"></p>
+            <p class="card-text" th:text="'album name :' + ${song.songAlbum.title}"></p>
+            <p class="card-text" th:text="'id of album : ' + ${song.songAlbum.id}"></p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+</body>
+</html>

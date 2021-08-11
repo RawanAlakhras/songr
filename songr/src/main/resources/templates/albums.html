@@ -24,6 +24,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/albums">albums</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/songs">Songs</a>
+                </li>
             </ul>
 
         </div>
@@ -80,8 +83,9 @@
         </div>
 <!--   end from      -->
         <div class="row row-cols-3">
+
             <div class="col" th:each="album : ${albums}">
-                <p ></p>
+
                 <div class="card" style="width: 18rem;">
                     <img th:src="${album.imageUrl}" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -89,9 +93,54 @@
                         <p class="card-text" th:text="'Artist: ' + ${album.artist}"></p>
                         <p class="card-text" th:text="'song Count: ' + ${album.songCount}"></p>
                         <p class="card-text" th:text="'length: ' + ${album.length}"></p>
+                        <hr>
+                        <h5 class="card-title" >the songs in this album :</h5>
+                        <ul th:each="song : ${album.getSongs()}">
+                            <li th:text="${song.getTitle()}"></li>
 
+                        </ul>
+<!--                    <div th:each="song : ${songs}">-->
+<!--                        <p th:if="${song.songAlbum.id == album.id} "><span th:text="${song.title}"></span></p>-->
+
+<!--                    </div>-->
+<!--                        <button type="button" class="btn btn-danger m-auto mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal2">-->
+<!--                            add song to this album-->
+<!--                        </button>-->
+                        <!--                start modal -->
+<!--                        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--                            <div class="modal-dialog">-->
+<!--                                <div class="modal-content">-->
+<!--                                    <div class="modal-header">-->
+<!--                                        <h5 class="modal-title" id="exampleModalLabel2">Add song </h5>-->
+<!--                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--                                    </div>-->
+<!--                                    <div class="modal-body">-->
+<!--                                        <form action="#" th:action="@{/addNewSongto/{id}(id = ${album.getId()})}" method="post">-->
+<!--                                            <div class="mb-3">-->
+<!--                                                <label for="title" class="form-label">title</label>-->
+<!--                                                <input name="title" type="text" class="form-control" id="title" aria-describedby="emailHelp" required>-->
+<!--                                            </div>-->
+<!--                                            <div class="mb-3">-->
+<!--                                                <label for="trackNumber" class="form-label">trackNumber</label>-->
+<!--                                                <input name="trackNumber" type="number" class="form-control" id="trackNumber"  required>-->
+<!--                                            </div>-->
+
+<!--                                            <div class="mb-3">-->
+<!--                                                <label for="length2" class="form-label">length</label>-->
+<!--                                                <input  name="length" type="number" class="form-control" id="length2"  required>-->
+<!--                                            </div>-->
+
+<!--                                            <button type="submit" class="btn btn-danger">Submit</button>-->
+<!--                                        </form>-->
+<!--                                    </div>-->
+
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                        <!--                end modal -->
                     </div>
-                </div>
+              </div>
+
             </div>
         </div>
     </div>
